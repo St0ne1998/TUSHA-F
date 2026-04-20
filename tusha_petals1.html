@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tusha Petals & Gifts – Mbombela's Finest Florist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose: #c0142e;
+    --rose-deep: #7a0a1c;
+    --rose-light: #f7c5cd;
+    --gold: #c9973a;
+    --gold-light: #f0d9a8;
+    --cream: #fdf6f0;
+    --dark: #1a0a0e;
+    --blush: #f9e8ec;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 60px;
+    background: rgba(26,10,14,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,151,58,0.3);
+    transition: all .3s;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; font-weight: 900; font-style: italic;
+    color: var(--gold);
+    letter-spacing: 1px;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--rose-light); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Sans', sans-serif; font-size: .85rem; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: rgba(253,246,240,0.8); text-decoration: none;
+    transition: color .3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--rose); color: #fff;
+    padding: 10px 24px; border-radius: 2px;
+    font-size: .8rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; transition: background .3s;
+  }
+  .nav-cta:hover { background: var(--rose-deep); color: #fff; }
+
+  /* ── HERO ── */
+  #hero {
+    position: relative; height: 100vh; min-height: 700px;
+    display: flex; align-items: center; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, #0d0407 0%, #2b0812 40%, #6b1526 70%, #c0142e 100%);
+  }
+  .hero-petals {
+    position: absolute; inset: 0; pointer-events: none;
+    background-image:
+      radial-gradient(ellipse 600px 400px at 75% 50%, rgba(192,20,46,0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 300px 300px at 80% 30%, rgba(201,151,58,0.18) 0%, transparent 50%);
+  }
+  .hero-decor {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 50%;
+    background: url('https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=900&q=80') center/cover no-repeat;
+    opacity: 0.35;
+    mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.7) 40%, black 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.7) 40%, black 100%);
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    padding: 0 60px;
+    max-width: 700px;
+    animation: heroFade 1.2s ease both;
+  }
+  @keyframes heroFade {
+    from { opacity: 0; transform: translateY(40px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: .75rem; letter-spacing: 4px; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px;
+    animation: heroFade 1s .2s ease both;
+  }
+  .hero-eyebrow::before, .hero-eyebrow::after {
+    content: ''; display: block; height: 1px; width: 40px; background: var(--gold);
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem); font-weight: 900; line-height: 1.05;
+    color: #fff; margin-bottom: 20px;
+    animation: heroFade 1s .4s ease both;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); display: block; }
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem; font-weight: 300; font-style: italic;
+    color: rgba(253,246,240,0.75); line-height: 1.7;
+    margin-bottom: 44px;
+    animation: heroFade 1s .6s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: heroFade 1s .8s ease both;
+  }
+  .btn-primary {
+    background: var(--rose); color: #fff;
+    padding: 16px 36px; border: none; cursor: pointer;
+    font-family: 'DM Sans', sans-serif; font-size: .85rem;
+    font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: all .3s; display: inline-block;
+    box-shadow: 0 8px 30px rgba(192,20,46,0.4);
+  }
+  .btn-primary:hover { background: var(--rose-deep); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(192,20,46,0.5); }
+  .btn-outline {
+    background: transparent; color: var(--gold);
+    padding: 16px 36px; border: 1.5px solid var(--gold);
+    font-family: 'DM Sans', sans-serif; font-size: .85rem;
+    font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; border-radius: 2px;
+    transition: all .3s; display: inline-block; cursor: pointer;
+  }
+  .btn-outline:hover { background: var(--gold); color: var(--dark); transform: translateY(-2px); }
+
+  /* ── MARQUEE ── */
+  .marquee-strip {
+    background: var(--gold); padding: 14px 0; overflow: hidden;
+  }
+  .marquee-inner {
+    display: flex; gap: 60px; width: max-content;
+    animation: marquee 22s linear infinite;
+  }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-item {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    font-size: .9rem; color: var(--dark); white-space: nowrap;
+    display: flex; align-items: center; gap: 20px;
+  }
+  .marquee-item::after { content: '✦'; font-style: normal; }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 100px 60px; }
+  .section-label {
+    font-size: .7rem; letter-spacing: 5px; text-transform: uppercase;
+    color: var(--rose); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before { content: ''; display: block; height: 1px; width: 30px; background: var(--rose); }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 900;
+    line-height: 1.1; margin-bottom: 20px;
+  }
+  .section-sub {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 1.1rem; color: #6b4040; line-height: 1.8;
+    max-width: 560px;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--dark);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  #about .section-title { color: #fff; }
+  #about .section-label { color: var(--gold); }
+  #about .section-label::before { background: var(--gold); }
+  #about .section-sub { color: rgba(253,246,240,0.6); }
+  .about-text p {
+    font-size: .95rem; line-height: 1.9; color: rgba(253,246,240,0.7);
+    margin-bottom: 20px;
+  }
+  .about-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 30px; margin-top: 44px;
+  }
+  .stat {
+    border-left: 2px solid var(--gold); padding-left: 20px;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900;
+    color: var(--gold); line-height: 1;
+  }
+  .stat-desc { font-size: .8rem; letter-spacing: 1px; color: rgba(253,246,240,0.5); margin-top: 6px; }
+  .about-img-wrap {
+    position: relative;
+  }
+  .about-img {
+    width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 4px;
+    display: block;
+  }
+  .about-img-badge {
+    position: absolute; bottom: -20px; left: -20px;
+    background: var(--gold); color: var(--dark);
+    padding: 20px 24px; font-family: 'Playfair Display', serif;
+    font-style: italic; font-size: 1rem; font-weight: 700;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+  }
+
+  /* ── SHOP / GALLERY ── */
+  #shop { background: var(--blush); }
+  .shop-header { text-align: center; margin-bottom: 60px; }
+  .shop-header .section-label { justify-content: center; }
+  .shop-header .section-label::before { display: none; }
+  .shop-header .section-label::after { content: ''; display: block; height: 1px; width: 30px; background: var(--rose); }
+  .shop-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 24px; max-width: 1200px; margin: 0 auto;
+  }
+  .product-card {
+    background: #fff; border-radius: 4px; overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all .35s; cursor: pointer;
+    position: relative;
+  }
+  .product-card:hover { transform: translateY(-8px); box-shadow: 0 16px 50px rgba(192,20,46,0.18); }
+  .product-img {
+    width: 100%; aspect-ratio: 1; object-fit: cover; display: block;
+    transition: transform .5s;
+  }
+  .product-card:hover .product-img { transform: scale(1.05); }
+  .product-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,10,14,0.85) 0%, transparent 50%);
+    opacity: 0; transition: opacity .35s;
+    display: flex; align-items: flex-end; padding: 28px;
+  }
+  .product-card:hover .product-overlay { opacity: 1; }
+  .product-order-btn {
+    background: var(--rose); color: #fff; border: none; cursor: pointer;
+    padding: 12px 28px; font-family: 'DM Sans', sans-serif;
+    font-size: .8rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase;
+    border-radius: 2px; width: 100%; transition: background .3s;
+    text-decoration: none; display: block; text-align: center;
+  }
+  .product-order-btn:hover { background: var(--rose-deep); }
+  .product-info { padding: 20px 24px; }
+  .product-name {
+    font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700;
+    color: var(--dark); margin-bottom: 6px;
+  }
+  .product-desc { font-size: .85rem; color: #8b5e6a; line-height: 1.5; }
+  .product-tag {
+    display: inline-block; margin-top: 10px;
+    background: var(--rose-light); color: var(--rose-deep);
+    font-size: .7rem; letter-spacing: 1px; padding: 3px 10px; border-radius: 20px;
+  }
+  .shop-cta { text-align: center; margin-top: 60px; }
+
+  /* ── WHY US ── */
+  #why {
+    background: #fff;
+    display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start;
+  }
+  .why-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 28px;
+  }
+  .why-card {
+    padding: 32px 28px;
+    border: 1px solid var(--rose-light); border-radius: 4px;
+    background: var(--cream);
+    transition: all .3s;
+  }
+  .why-card:hover { border-color: var(--rose); transform: translateY(-4px); }
+  .why-icon { font-size: 2rem; margin-bottom: 14px; }
+  .why-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
+  .why-text { font-size: .85rem; color: #6b4040; line-height: 1.7; }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--rose-deep); text-align: center; }
+  #testimonials .section-title { color: #fff; }
+  #testimonials .section-label { color: var(--gold); justify-content: center; }
+  #testimonials .section-label::before { display: none; }
+  #testimonials .section-label::after { content: ''; display: block; height: 1px; width: 30px; background: var(--gold); }
+  .testi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 28px; max-width: 1100px; margin: 60px auto 0;
+  }
+  .testi-card {
+    background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+    padding: 36px 32px; border-radius: 4px;
+    text-align: left;
+  }
+  .testi-stars { color: var(--gold); font-size: 1rem; margin-bottom: 16px; letter-spacing: 2px; }
+  .testi-text {
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 1.05rem; color: rgba(253,246,240,0.85); line-height: 1.8;
+    margin-bottom: 24px;
+  }
+  .testi-author { font-size: .8rem; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--dark);
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  }
+  #contact .section-title { color: #fff; }
+  #contact .section-label { color: var(--gold); }
+  #contact .section-label::before { background: var(--gold); }
+  .contact-items { margin-top: 44px; display: flex; flex-direction: column; gap: 24px; }
+  .contact-item {
+    display: flex; align-items: flex-start; gap: 20px;
+    padding: 20px 24px;
+    border: 1px solid rgba(201,151,58,0.2); border-radius: 4px;
+    background: rgba(255,255,255,0.03);
+    transition: border-color .3s;
+  }
+  .contact-item:hover { border-color: var(--gold); }
+  .contact-icon { font-size: 1.4rem; }
+  .contact-label { font-size: .7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 4px; }
+  .contact-value { font-size: .95rem; color: rgba(253,246,240,0.8); }
+  .contact-value a { color: rgba(253,246,240,0.8); text-decoration: none; }
+  .contact-value a:hover { color: var(--gold); }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+  .form-label { font-size: .75rem; letter-spacing: 2px; text-transform: uppercase; color: rgba(253,246,240,0.5); }
+  .form-input, .form-textarea {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(201,151,58,0.2);
+    color: #fff; padding: 14px 18px; border-radius: 2px; font-family: 'DM Sans', sans-serif;
+    font-size: .9rem; outline: none; transition: border-color .3s;
+  }
+  .form-input:focus, .form-textarea:focus { border-color: var(--gold); background: rgba(255,255,255,0.09); }
+  .form-textarea { height: 120px; resize: vertical; }
+  .form-input::placeholder, .form-textarea::placeholder { color: rgba(253,246,240,0.3); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #0a0205; padding: 50px 60px 30px;
+    display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 60px;
+    border-top: 1px solid rgba(201,151,58,0.2);
+  }
+  .footer-brand { }
+  .footer-logo {
+    font-family: 'Playfair Display', serif; font-size: 1.8rem;
+    font-weight: 900; font-style: italic; color: var(--gold);
+  }
+  .footer-logo span { color: var(--rose-light); }
+  .footer-desc { font-size: .85rem; color: rgba(253,246,240,0.4); line-height: 1.8; margin-top: 16px; }
+  .footer-heading { font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { font-size: .85rem; color: rgba(253,246,240,0.5); text-decoration: none; transition: color .3s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-bottom {
+    padding: 24px 60px; background: #0a0205;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: .78rem; color: rgba(253,246,240,0.3);
+  }
+
+  /* ── WHATSAPP BUTTON ── */
+  .wa-float {
+    position: fixed; bottom: 32px; right: 32px; z-index: 1000;
+    width: 62px; height: 62px; border-radius: 50%;
+    background: #25D366;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 30px rgba(37,211,102,0.5);
+    text-decoration: none; transition: all .3s;
+    animation: waPulse 2.5s ease-in-out infinite;
+  }
+  .wa-float:hover { transform: scale(1.12); box-shadow: 0 10px 40px rgba(37,211,102,0.6); }
+  @keyframes waPulse {
+    0%, 100% { box-shadow: 0 6px 30px rgba(37,211,102,0.5); }
+    50% { box-shadow: 0 6px 30px rgba(37,211,102,0.5), 0 0 0 14px rgba(37,211,102,0.08); }
+  }
+  .wa-icon { width: 30px; height: 30px; }
+  .wa-tooltip {
+    position: absolute; right: 72px; top: 50%; transform: translateY(-50%);
+    background: #111; color: #fff; font-size: .78rem; font-weight: 500;
+    padding: 8px 14px; border-radius: 4px; white-space: nowrap;
+    opacity: 0; pointer-events: none; transition: opacity .3s;
+  }
+  .wa-float:hover .wa-tooltip { opacity: 1; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    section { padding: 70px 24px; }
+    #about, #contact { grid-template-columns: 1fr; gap: 40px; }
+    #why { grid-template-columns: 1fr; gap: 40px; }
+    .shop-grid { grid-template-columns: 1fr 1fr; }
+    .testi-grid { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; gap: 36px; }
+    .footer-bottom { flex-direction: column; gap: 8px; padding: 20px 24px; }
+    .hero-content { padding: 0 24px; }
+    .about-stats { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .shop-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .hero-actions { flex-direction: column; }
+    .btn-primary, .btn-outline { text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">Tusha<span> Petals</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="https://wa.me/27728357337?text=Hi!%20I'd%20like%20to%20place%20an%20order%20🌹" target="_blank" class="nav-cta">Order Now</a>
+</nav>
+
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-petals"></div>
+  <div class="hero-decor"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Mbombela's Finest Florist</div>
+    <h1 class="hero-title">
+      Blooms That<br>
+      <em>Speak From</em>
+      The Heart
+    </h1>
+    <p class="hero-subtitle">
+      Luxury bouquets, bespoke arrangements & heartfelt gifts — crafted with passion in the heart of Mbombela.
+    </p>
+    <div class="hero-actions">
+      <a href="#shop" class="btn-primary">🌹 Products</a>
+      <a href="#about" class="btn-outline">Our Story</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip">
+  <div class="marquee-inner">
+    <span class="marquee-item">Luxury Bouquets</span>
+    <span class="marquee-item">Same-Day Delivery</span>
+    <span class="marquee-item">Wedding Flowers</span>
+    <span class="marquee-item">Gift Hampers</span>
+    <span class="marquee-item">100 Rose Arrangements</span>
+    <span class="marquee-item">Corporate Gifting</span>
+    <span class="marquee-item">Personalised Gifts</span>
+    <span class="marquee-item">Luxury Bouquets</span>
+    <span class="marquee-item">Same-Day Delivery</span>
+    <span class="marquee-item">Wedding Flowers</span>
+    <span class="marquee-item">Gift Hampers</span>
+    <span class="marquee-item">100 Rose Arrangements</span>
+    <span class="marquee-item">Corporate Gifting</span>
+    <span class="marquee-item">Personalised Gifts</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="about-text">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-title" style="color:#fff;">More Than Flowers —<br>It's a <em style="font-style:italic;color:var(--gold);">Feeling</em></h2>
+    <p style="color:rgba(253,246,240,0.7);font-size:.95rem;line-height:1.9;margin-top:8px;">
+      Tusha Petals & Gifts was born from a deep love for flowers and the joy of making people feel truly special[cite: 17, 18]. Based in the heart of Mbombela, we've been crafting breathtaking bouquets and curated gift experiences that leave lasting impressions[cite: 17, 19].
+    </p>
+    <p style="color:rgba(253,246,240,0.7);font-size:.95rem;line-height:1.9;">
+      Whether it's a grand romantic gesture, a birthday surprise, a wedding, or a heartfelt thank-you — we pour artistry and love into every single arrangement[cite: 18]. No two bouquets are ever the same.
+    </p>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-num">1,700+</div>
+        <div class="stat-desc">Arrangements Delivered</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3.6K</div>
+        <div class="stat-desc">Happy Followers</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-desc">Fresh Flowers</div>
+      </div>
+    </div>
+  </div>
+  <div class="about-img-wrap">
+    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&q=8" alt="Beautiful floral arrangement" class="about-img">
+    <div class="about-img-badge">Est. in Mbombela,<br>with ❤️</div>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="shop-header">
+    <div class="section-label">Our Collections</div>
+    <h2 class="section-title">Handcrafted for <em style="font-style:italic;color:var(--rose);">Every Occasion</em></h2>
+    <p class="section-sub" style="margin:0 auto;text-align:center;">Click any arrangement to order directly via WhatsApp — we'll craft it fresh, just for you[cite: 23, 30].</p>
+  </div>
+  <div class="shop-grid">
+
+    <div class="product-card">
+      <img src="f1.jpeg" alt="100 Red Roses" class="product-img">
+      <div class="product-overlay">
+        <a href="https://wa.me/27728357337?text=Hi!%20I'd%20like%20to%20order%20the%20100%20Red%20Roses%20bouquet%20🌹" target="_blank" rel="noopener" class="product-order-btn">Order on WhatsApp</a>
+      </div>
+      <div class="product-info">
+        <div class="product-name">100 Stem Red Rose Bouquet</div>
+        <div class="product-desc">The ultimate declaration — 100 fresh crimson roses wrapped in luxurious packaging.</div>
+        <span class="product-tag">Best Seller</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="f6.jpeg" alt="Mixed Bouquet" class="product-img">
+      <div class="product-overlay">
+        <a href="https://wa.me/27728357337?text=Hi!%20I'd%20like%20to%20order%20a%20Mixed%20Luxury%20Bouquet%20🌸" target="_blank" rel="noopener" class="product-order-btn">Order on WhatsApp</a>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Mixed Luxury Bouquet</div>
+        <div class="product-desc">A curated blend of roses, tulips, and lilies — colourful, lush, and breathtaking.</div>
+        <span class="product-tag">Popular</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="f5.jpeg" alt="Heart Box" class="product-img">
+      <div class="product-overlay">
+        <a href="https://wa.me/27728357337?text=Hi!%20I'd%20like%20to%20order%20a%20Heart%20Box%20Arrangement%20❤️" target="_blank" rel="noopener" class="product-order-btn">Order on WhatsApp</a>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Heart Box Roses</div>
+        <div class="product-desc">Roses arranged in a stunning heart-shaped luxury box — perfect for anniversaries.</div>
+        <span class="product-tag">Romantic</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="f4.jpeg" alt="White Bouquet" class="product-img">
+      <div class="product-overlay">
+        <a href="https://wa.me/27728357337?text=Hi!%20I'd%20like%20to%20order%20a%20White%20Elegance%20Bouquet%20🤍" target="_blank" rel="noopener" class="product-order-btn">Order on WhatsApp</a>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Red Elegance</div>
+        <div class="product-desc">Pure red roses and baby's breath — timeless, serene, and deeply moving.</div>
+        <span class="product-tag">Wedding</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="f7.jpeg" alt="Hamper Gift" class="product-img">
+      <div class="product-overlay">
+        <a href="https://wa.me/27728357337?text=Hi!%20I'd%20like%20to%20order%20a%20Gift%20Hamper%20🎁" target="_blank" rel="noopener" class="product-order-btn">Order on WhatsApp</a>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Luxury Gift Hamper</div>
+        <div class="product-desc">Flowers paired with curated gifts — chocolates, candles & more[cite: 17]. Truly unforgettable.</div>
+        <span class="product-tag">Gifts</span>
+      </div>
+    </div>
+
+    <div class="product-card">
+      <img src="f8.jpeg" alt="Custom Arrangement" class="product-img">
+      <div class="product-overlay">
+        <a href="https://wa.me/27728357337?text=Hi!%20I'd%20like%20to%20discuss%20a%20custom%20arrangement%20✨" target="_blank" rel="noopener" class="product-order-btn">Order on WhatsApp</a>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Bespoke Arrangement</div>
+        <div class="product-desc">You dream it, we create it. Fully customised bouquets for any occasion[cite: 17, 18].</div>
+        <span class="product-tag">Custom</span>
+      </div>
+    </div>
+
+  </div>
+  <div class="shop-cta">
+    <a href="https://wa.me/27728357337?text=Hi!%20I'd%20like%20to%20browse%20your%20full%20collection%20🌹" target="_blank" class="btn-primary">View Full Collection on WhatsApp</a>
+  </div>
+</section>
+
+<section id="why">
+  <div>
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">The Tusha<br><em style="font-style:italic;color:var(--rose);">Promise</em></h2>
+    <p class="section-sub">We don't just sell flowers — we deliver emotion, artistry, and unforgettable moments[cite: 19].</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🌹</div>
+      <div class="why-title">Always Fresh</div>
+      <div class="why-text">Every bloom is sourced fresh and arranged on the day of delivery[cite: 18]. No wilting, no compromise.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎨</div>
+      <div class="why-title">Artisan Craft</div>
+      <div class="why-text">Each arrangement is handcrafted with a designer's eye — unique, stunning, and personal[cite: 17, 19].</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <div class="why-title">Fast Delivery</div>
+      <div class="why-text">Need it today? We offer same-day delivery in Mbombela for those last-minute moments that matter[cite: 18].</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💬</div>
+      <div class="why-title">Personal Service</div>
+      <div class="why-text">Chat directly with us on WhatsApp[cite: 23]. We guide you to the perfect arrangement, every time.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎁</div>
+      <div class="why-title">Gift Add-Ons</div>
+      <div class="why-text">Combine flowers with chocolates, teddies, candles and more for a truly complete gift[cite: 17].</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💎</div>
+      <div class="why-title">Premium Quality</div>
+      <div class="why-text">Luxury packaging, premium ribbon, and attention to every detail — because you deserve the best[cite: 17].</div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="section-label">Happy Customers</div>
+  <h2 class="section-title">Words from Our <em style="font-style:italic;color:var(--gold);">Beloved Clients</em></h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Tusha Petals made my partner cry tears of joy. The 100-rose bouquet was absolutely magnificent — more beautiful than any photo could show."</p>
+      <div class="testi-author">— Sipho M., Mbombela</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Ordered on WhatsApp at 10am and the flowers arrived by 1pm — fresh, stunning, perfectly wrapped. Truly exceptional service!"</p>
+      <div class="testi-author">— Thandi K., Nelspruit</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"We used Tusha Petals for our entire wedding floral décor. Every arrangement was breathtaking. Our guests couldn't stop talking about the flowers!"</p>
+      <div class="testi-author">— Nomsa & Bongani</div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div>
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title" style="color:#fff;">Visit Us or<br><em style="font-style:italic;color:var(--gold);">Say Hello</em></h2>
+    <div class="contact-items">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Brown Street, Mbombela 1200, Shop 6</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📱</div>
+        <div>
+          <div class="contact-label">WhatsApp / Call</div>
+          <div class="contact-value"><a href="https://wa.me/27728357337" target="_blank">072 835 7337</a></div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Landline</div>
+          <div class="contact-value"><a href="tel:0130040060">013 004 0060</a></div>
+        </div>
+      </div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📸</div>
+        <div>
+          <div class="contact-label">Instagram</div>
+          <div class="contact-value"><a href="https://instagram.com/tusha_petals" target="_blank">@tusha_petals</a> [cite: 48]</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <p style="color:rgba(253,246,240,0.5);font-size:.85rem;margin-bottom:28px;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;">
+      Have a special request or need help choosing the perfect arrangement? Send us a message and we'll get back to you swiftly[cite: 18].
+    </p>
+    <div class="contact-form">
+      <div class="form-group">
+        <label class="form-label">Your Name</label>
+        <input type="text" class="form-input" placeholder="e.g. Thandi Khumalo" id="cName">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Occasion</label>
+        <input type="text" class="form-input" placeholder="e.g. Birthday, Anniversary, Wedding..." id="cOccasion">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Your Message</label>
+        <textarea class="form-textarea" placeholder="Tell us what you need..." id="cMessage"></textarea>
+      </div>
+      <button onclick="sendWhatsApp()" class="btn-primary" style="border:none;cursor:pointer;width:100%;font-size:.85rem;">💬 Send via WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">Tusha<span> Petals</span></div>
+    <p class="footer-desc">Mbombela's premier florist & gift specialist[cite: 17]. Crafting unforgettable floral experiences since day one.</p>
+  </div>
+  <div>
+    <div class="footer-heading">Quick Links</div>
+    <ul class="footer-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-heading">Contact</div>
+    <ul class="footer-links">
+      <li><a href="https://wa.me/27728357337" target="_blank">072 835 7337 (WhatsApp)</a> [cite: 23]</li>
+      <li><a href="tel:0130040060">013 004 0060</a></li>
+      <li><a href="#">Brown St, Mbombela, Shop 6</a></li>
+      <li><a href="https://instagram.com/tusha_petals" target="_blank">@tusha_petals</a> [cite: 48]</li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2026 Tusha Petals & Gifts. All rights reserved.</span>
+  <span>Made with 🌹 in Mbombela</span>
+</div>
+
+<a href="https://wa.me/27728357337?text=Hi%20Tusha%20Petals!%20I'd%20like%20to%20place%20an%20order%20🌹" target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+  <div class="wa-tooltip">Order on WhatsApp</div>
+  <svg class="wa-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 3C9.373 3 4 8.373 4 15c0 2.385.688 4.61 1.88 6.492L4 29l7.768-1.857A11.96 11.96 0 0016 27c6.627 0 12-5.373 12-12S22.627 3 16 3z" fill="#fff"/>
+    <path d="M22.003 18.93c-.294-.148-1.74-.86-2.011-.957-.27-.098-.467-.148-.663.148-.196.295-.76.957-.932 1.154-.172.196-.344.22-.638.074-.294-.147-1.243-.458-2.367-1.459-.875-.78-1.466-1.744-1.638-2.038-.172-.295-.018-.454.13-.601.132-.132.294-.344.442-.516.147-.172.196-.295.294-.491.098-.197.049-.369-.025-.516-.074-.148-.663-1.599-.908-2.19-.24-.576-.483-.498-.663-.507l-.565-.009c-.196 0-.516.074-.786.369-.27.295-1.03 1.006-1.03 2.453 0 1.447 1.055 2.845 1.202 3.04.148.196 2.075 3.168 5.028 4.44.702.303 1.25.484 1.677.62.705.224 1.346.193 1.854.117.565-.085 1.74-.712 1.986-1.4.245-.688.245-1.277.172-1.4-.073-.122-.27-.196-.564-.344z" fill="#25D366"/>
+  </svg>
+</a>
+
+<script>
+function sendWhatsApp() {
+  const name = document.getElementById('cName').value.trim();
+  const occasion = document.getElementById('cOccasion').value.trim();
+  const message = document.getElementById('cMessage').value.trim();
+  if (!name && !message) { alert('Please fill in your name and message first.'); return; }
+  const text = `Hi Tusha Petals! 🌹\n\nName: ${name || 'Not provided'}\nOccasion: ${occasion || 'Not specified'}\nMessage: ${message || 'Not provided'}`;
+  window.open(`https://wa.me/27728357337?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+// Nav scroll effect
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 60) {
+    nav.style.padding = '12px 60px';
+  } else {
+    nav.style.padding = '18px 60px';
+  }
+});
+</script>
+</body>
+</html>
